@@ -7,20 +7,29 @@ from localingredients.recipes.forms import RecipeForm,CardForm
 from localingredients.users.utils import save_picture
 import json
 recipes = Blueprint('recipes', __name__)
-
-"""
-@stores.route("/store/new", methods=['GET', 'POST'])
+@recipes.route("/newrecipe", methods=['GET', 'POST'])
 @login_required
-def new_store():
-    form = StoreForm()
+def new_recipe():
+    form = RecipeForm()
     if form.validate_on_submit():
-        store = Store(title=form.title.data, author=current_user,code=form.Code.data)
-        db.session.add(store)
+        recipe = Recipe(title=form.title.data, author=current_user,ingredients=form.Code.data,instructions=form.Code2.data)
+        if form.picture.data:
+            picture_file = save_picture(form.picture.data)
+            recipe.image_file = picture_file
+        db.session.add(recipe)
         db.session.commit()
-        flash('Your Store has been created!', 'success')
+        flash('Your Recipe has been created!', 'success')
         return redirect(url_for('main.home'))
-    return render_template('create_store.html', title='New Store',
-                           form=form, legend='New Store')
+    return render_template('create_recipe.html', title='Write a Recipe',
+                           form=form, legend='New Recipe')
+@recipes.route("/<string:recipe_name>",methods=['GET','POST'])
+def recipe(recipe_name):
+        recipe = Recipe.query.filter_by(title=recipe_name).first()
+        if(recipe==None):
+            abort(404)
+        return render_template('recipe.html',recipe=recipe)
+"""
+
 
 @stores.route("/store/<string:store_name>/<string:mode>",methods=['GET','POST'])
 def store(store_name,mode):

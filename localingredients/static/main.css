@@ -104,18 +104,7 @@ width: 36px;
 	 font-size: 48px;
 }
 
- .open button {
-	 opacity: 1;
-}
- .open button:before {
-	 opacity: 0;
-	 width: 0;
-}
- .open button:after {
-	 opacity: 1;
-	 transform: translate3d(0, 0, 0) rotate(360deg);
-	 transition: transform 1s ease-out, opacity 0.2s 0.2s ease-out;
-}
+
 .menu{
     position: absolute;
     left:35%;
@@ -275,7 +264,7 @@ nav:before {
 ul.menu {
 	background:rgba(152,178,150,0.4);
 	position: fixed;
-	top: 20%;
+	top: 30%;
 	width:200%;
 	left: 85px;
 	transform: translate3d(-50%, -50%, 0);
@@ -345,3 +334,22 @@ ul.menu li:hover:after {
 .open ul.menu li:nth-child(4) {
 	transition-delay: 0.12s;
 }
+.btn-1 {
+    width: 130px;
+    height: 40px;
+    line-height: 42px;
+    padding: 0;
+	border: #98b296 solid 2px;
+	color: black;	
+  }
+  .btn-1 span {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .btn-1:hover {
+	background: #98b296;
+	color: wheat;	
+  }

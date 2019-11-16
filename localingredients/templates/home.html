@@ -4,17 +4,26 @@
     <main style="position:fixed;top:30%;left:0%;width:100%">        
         <h1 style="margin:auto;text-align:center;"><strong style="color:green">.</strong>Local Ingredients</h1>  
         <p style="margin:auto;text-align:center;">Find recipes based on local ingrediants, for dunedin :)</p>  
-    <form style="text-align:center;margin:auto">
+    <form method="POST" style="text-align:center;margin:auto">
         <select name="type" style="width:10%">
             <option value="vegan">Vegan</option>
             <option value="vege">Vegetarian</option>
             <option value="fish">Pescatarian</option>
             <option value="na">No preference</option>
           </select> 
-    <input name="search" placeholder="search here..." style="width:50%;background-color:transparent;border-block:none;border-left:none;border-bottom:#989898 solid 5px">    
+    <input onmouseout="unfocused(this)" onmouseover="focused(this)" name="search" placeholder="search here..." style="width:50%;background-color:transparent;border-block:none;border-left:none;border-bottom:#989898 solid 5px">    
+
     <button type="submit" class="custom-btn btn-6"><span>Search</span></button><br>      
 </form>
 </main>
 
+<script>
+function focused(ele){
+    ele.style = "width:50%;background:rgba(150,170,140,0.4);border-block:none;border-left:none;border-bottom:#989898 solid 5px";
+}function unfocused(ele){
+    ele.style = "width:50%;background-color:transparent;border-block:none;border-left:none;border-bottom:#989898 solid 5px";
+}
+
+</script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
   {% endblock %}

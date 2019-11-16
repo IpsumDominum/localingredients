@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+  {% block content %}  
+  <main>        
+      <h1 style="margin:auto;text-align:center;"><strong style="color:green">.</strong>Local Ingredients</h1>  
+      <p style="margin:auto;text-align:center;">Find recipes based on local ingrediants, for dunedin :)</p>  
+  <form style="text-align:center;margin:auto">
+      <select name="type" style="width:10%">
+          <option value="vegan">Vegan</option>
+          <option value="vege">Vegetarian</option>
+          <option value="fish">Pescatarian</option>
+          <option value="na">No preference</option>
+        </select> 
+  <input name="search" placeholder="search here..." style="width:50%;background-color:transparent;border-block:none;border-left:none;border-bottom:#989898 solid 5px">    
+  <button type="submit" class="custom-btn btn-6"><span>Search</span></button><br>      
+</form>
+</main>
+<hr>
+<div class="container">
+    <div class="row" style="position:relative">
+            <div class="col" style="position:absolute;height:500px;width:400px;margin-left:10%">
+                    <img src="{{url_for('static',filename='images/'+recipe.image_file)}}" style="height:92%;width:100%">                    
+            </div>
+            <div class="col" style="position:absolute;margin-left:45%;width:50%;">
+                    <h1>{{recipe.title}}</h1>
+                    <hr>
+                    <h3>{{recipe.ingredients}}</h3>  
+        </div>                    
+        <article style="margin-top:40%;margin-left:auto;margin-right:auto;padding:40px;">
+                <h3>Instructions</h3>
+                <hr>
+            {{recipe.instructions}}</article>                
+        </div>
+        </div>
+</div>
+{% endblock %}

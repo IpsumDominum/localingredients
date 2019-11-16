@@ -10,7 +10,6 @@ import pickle
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
-
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(20), unique=True, nullable=False)
@@ -37,9 +36,8 @@ class Recipe(db.Model):
     title = db.Column(db.String(100), nullable=False)
     date_posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     image_file = db.Column(db.String(20), nullable=False, default='default.jpg')
-    background = db.Column(db.String(20),nullable=False,default='rawbackground.jpg')
-    sitebackground = db.Column(db.String(20),nullable=False,default='rawbackground.jpg')
-    code = db.Column(db.String(100))
+    ingredients = db.Column(db.String(100))
+    instructions = db.Column(db.String(400))
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     def __repr__(self):
-        return f"Store('{self.title}', '{self.date_posted}')"
+        return f"Recipe('{self.title}', '{self.date_posted}')"

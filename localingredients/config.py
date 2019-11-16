@@ -12,4 +12,7 @@ class Config:
     MAIL_USE_TLS = True
     MAIL_USERNAME = config.get('MAIL_USERNAME')
     MAIL_PASSWORD = config.get('MAIL_PASSWORD')
-    
+    RECAPTCHA_USE_SSL = False
+    RECAPTCHA_PUBLIC_KEY = 'public'
+    RECAPTCHA_PRIVATE_KEY = 'private'
+    RECAPTCHA_OPTIONS = {'theme': 'white'}

@@ -1,3 +1,3 @@
-$('button').on('click', function(){
+$('.burgerbutton').on('click', function(){
     $('body').toggleClass('open');
   });
