@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+  {% block content %}  
+  <main>        
+      <h1 style="margin:auto;text-align:center;"><strong style="color:green">.</strong>Local Ingredients</h1>  
+      <p style="margin:auto;text-align:center;">Find recipes based on local ingrediants, for dunedin :)</p>  
+  <form style="text-align:center;margin:auto">
+      <select name="type" style="width:10%">
+          <option value="vegan">Vegan</option>
+          <option value="vege">Vegetarian</option>
+          <option value="fish">Pescatarian</option>
+          <option value="na">No preference</option>
+        </select> 
+  <input name="search" placeholder="search here..." style="width:50%;background-color:transparent;border-block:none;border-left:none;border-bottom:#989898 solid 5px">    
+  <button type="submit" class="custom-btn btn-6"><span>Search</span></button><br>      
+</form>
+</main>
+<hr>
+<div class="container">
+    <div class="row ">
+          <div class="col s3 itembox" style="position:relative">
+                  <div style="top:80%;padding:2%;position:absolute;opacity:0;color:wheat;border:wheat;"><h3>Goat Cheese feta bread thing</h3></div>    
+                  <div style="top:10%;padding:2%;position:absolute;opacity:0;color:wheat;border:wheat;"><h4>Ingrediants</h4></div>    
+                  <img  onmouseout = "lowerinfo(this)" onmouseover="showinfo(this)" src="{{url_for('static',filename="default.jpg")}}" style="height:100%;width:100%">
+            </div>
+            <div class="col s3 itembox" style="position:relative">
+              <div style="top:80%;padding:2%;position:absolute;opacity:0;color:wheat;border:wheat;"><h3>Goat Cheese feta bread thing</h3></div>    
+              <div style="top:10%;padding:2%;position:absolute;opacity:0;color:wheat;border:wheat;"><h4>Ingrediants</h4></div>    
+              <img  onmouseout = "lowerinfo(this)" onmouseover="showinfo(this)" src="{{url_for('static',filename="default.jpg")}}" style="height:100%;width:100%">
+        </div>
+            <div class="col s3 itembox" style="position:relative">
+                  <div style="top:80%;padding:2%;position:absolute;opacity:0;color:wheat;border:wheat;"><h3>Goat Cheese feta bread thing</h3></div>    
+                  <div style="top:10%;padding:2%;position:absolute;opacity:0;color:wheat;border:wheat;"><h4>Ingrediants</h4></div>    
+                  <img  onmouseout = "lowerinfo(this)" onmouseover="showinfo(this)" src="{{url_for('static',filename="default.jpg")}}" style="height:100%;width:100%">
+            </div>
+            <div class="col s3 itembox" style="position:relative">
+                  <div style="top:80%;padding:2%;position:absolute;opacity:0;color:wheat;border:wheat;"><h3>Goat Cheese feta bread thing</h3></div>    
+                  <div style="top:10%;padding:2%;position:absolute;opacity:0;color:wheat;border:wheat;"><h4>Ingrediants</h4></div>    
+                  <img  onmouseout = "lowerinfo(this)" onmouseover="showinfo(this)" src="{{url_for('static',filename="default.jpg")}}" style="height:100%;width:100%">
+            </div> 
+            
+          </div>
+  </div>
+  <script>
+      function lowerinfo(ele){
+          var parent_children = ele.parentNode.childNodes;
+      for(i=1;i<parent_children.length;i++){
+          if(parent_children[i].style!=undefined){
+          parent_children[i].style.opacity=0;
+          }
+      }
+          ele.style.opacity=1;
+      }
+  function showinfo(ele){
+      var parent_children = ele.parentNode.childNodes;
+      for(i=1;i<parent_children.length;i++){
+          if(parent_children[i].style!=undefined){
+          parent_children[i].style.opacity=1;
+          }
+      }
+      ele.style.opacity = 0.15;
+  }</script>
+{% endblock %}

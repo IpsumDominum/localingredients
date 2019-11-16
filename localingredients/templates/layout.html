@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Local-Ingrediants&mdash;Recipes for dunedin</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{url_for('static',filename='main.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='card.css')}}">
+    
+  </head>
+  
+  
+  <button class="burgerbutton menu-toggle">
+  </button>
+  <div class="userinfobox">
+  {{ current_user.username }}
+  <img class="usericon" src="{{url_for('static',filename='random.jpeg')}}" width="" >  
+  </div>
+<nav>
+    <ul class="menu">
+        <li onclick="document.location='{{url_for('main.home')}}'" data-text="Home">Home</li>
+        {% if current_user.is_authenticated %}
+        <li onclick="document.location='{{url_for('users.logout')}}'" data-text="Login">Logout</li>
+        {% else %}
+        <li onclick="document.location='{{url_for('users.login')}}'" data-text="Login">Login</li>
+        {% endif %}
+        <li onclick="document.location='{{url_for('main.recipelist')}}'" data-text="Recipes">Recipes</li>
+        <li onclick="document.location='{{url_for('main.about')}}'" data-text="Contact">Contact</li>
+    </ul>
+</nav>
+  {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+              {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">
+                  {{ message }}
+                </div>
+              {% endfor %}
+            {% endif %}
+          {% endwith %}
+{% block content %}{% endblock %}    
+<footer style="position:fixed;bottom:0%;width:100%">
+  <hr>
+<p> Copy Right 2019&copy; Fishy Webdevelopment &nbsp;&nbsp;&nbsp;&nbsp;  ipsumdominum.github.io</p>
+</footer> 
+<script src="{{url_for('static',filename='main.js')}}"></script>
+  
+</body>
+</html>
